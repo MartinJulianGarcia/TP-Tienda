@@ -20,6 +20,9 @@ public class Tarjeta
     @Id
     int numero;
 
+    @OneToOne (mappedBy = "tarjeta")
+            Usuario usuario;
+
     String tipo;
     int id;
 

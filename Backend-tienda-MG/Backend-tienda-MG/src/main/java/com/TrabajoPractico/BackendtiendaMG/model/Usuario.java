@@ -32,6 +32,14 @@ public abstract class Usuario
        @OneToMany(mappedBy = "usuario")
         List<Compra> miscompras;
 
+       @OneToOne
+       @JoinColumn( name = "id_direccion")
+       Direccion direccion;
+
+        @OneToOne
+        @JoinColumn(name = "id_tarjeta")
+       Tarjeta tarjeta;
+
         public String getNombreusuario() {
             return Nombreusuario;
         }
