@@ -4,23 +4,33 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Usuario
     {
-        public Usuario (long id, String Nombreusuario, String contraseña, String mail)
+        public Usuario (Long id, String Nombreusuario, String contraseña, String mail)
         { this.id=id;
             this.Nombreusuario=Nombreusuario;
             this.contraseña=contraseña;
             this.mail=mail;
+            miscompras=new ArrayList<Compra>();
         }
         public Usuario ()
         {
         }
         @Id
-        long id;
+        Long id;
+
+
         String Nombreusuario;
         String contraseña;
         String mail;
+
+       @OneToMany(mappedBy = "usuario")
+        List<Compra> miscompras;
 
         public String getNombreusuario() {
             return Nombreusuario;
@@ -30,11 +40,11 @@ public abstract class Usuario
             this.Nombreusuario=nombreusuario;
         }
 
-        public void setId(long id) {
+        public void setId(Long id) {
             this.id=id;
         }
 
-        public long getId() {
+        public Long getId() {
             return id;
         }
 

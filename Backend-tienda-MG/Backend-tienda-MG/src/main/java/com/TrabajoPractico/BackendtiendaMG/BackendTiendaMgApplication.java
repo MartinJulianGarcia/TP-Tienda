@@ -16,7 +16,7 @@ public class BackendTiendaMgApplication
 	public static void main(String[] args)
 	{
 
-	//	SpringApplication.run(BackendTiendaMgApplication.class, args);
+
 
         System.out.printf("Bienvenido a la tienda! \n");
 		System.out.printf(Articulo.retornarclase());

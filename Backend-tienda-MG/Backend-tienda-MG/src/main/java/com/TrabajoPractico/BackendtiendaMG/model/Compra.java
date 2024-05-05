@@ -3,24 +3,45 @@ package com.TrabajoPractico.BackendtiendaMG.model;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Compra
 {
-    public Compra (int Ncompra, Date fecha, int importe,  String mediodepago, long id)
+    public Compra ( Date fecha, int importe,  String mediodepago, long id, List<Articulo> arts)
     {
-        this.Ncompra=Ncompra;
+
         this.fecha=fecha;
         this.importe=importe;
         this.mediodepago=mediodepago;
         this.id=id;
+        articulos=arts;
+        this.usuario=new Cliente();
+
     }
 
     public Compra(){}
+
+    @ManyToMany
+    @JoinTable(
+            name = "compra_articulos",
+            joinColumns = @JoinColumn(name = "id_compra"),
+            inverseJoinColumns = @JoinColumn(name = "id_articulo")
+    )
+    List <Articulo> articulos;
+
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", nullable = false)
+    Usuario usuario;
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-    int Ncompra;
+
     Date fecha;
     int importe;
     String mediodepago;
@@ -49,13 +70,6 @@ public class Compra
         this.importe = importe;
     }
 
-    public int getNcompra() {
-        return Ncompra;
-    }
-
-    public void setNcompra(int ncompra) {
-        Ncompra = ncompra;
-    }
 
     public String getMediodepago() {
         return mediodepago;
@@ -66,4 +80,21 @@ public class Compra
     }
 
 
+    public List<Articulo> getArticulos() {
+        return articulos;
+    }
+
+
+    public void setArticulos(List<Articulo> articulos) {
+        this.articulos = articulos;
+    }
+
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
 }

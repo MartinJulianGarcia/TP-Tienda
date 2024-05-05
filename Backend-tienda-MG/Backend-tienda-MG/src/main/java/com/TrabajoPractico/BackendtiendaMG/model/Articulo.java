@@ -6,19 +6,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 
 @Entity
 public class Articulo
 {
-    public Articulo (int idart, String Nombre,int stock, int precio, String temporada)
+    public Articulo (Long idart, String nombre,int stock, int precio, String tipo, String temporada)
     {
-        this.idart=idart;
-        this.Nombreusuario=Nombre;
+        this.id=idart;
+        this.nombre=nombre;
         this.stock=stock;
         this.temporada=temporada;
         this.precio=precio;
+        this.tipo=tipo;
+        compras= new ArrayList<>();
 
     }
     public Articulo ()
@@ -26,18 +28,48 @@ public class Articulo
     }
 
     @Id
-    int idart;
-    String Nombreusuario;
+    Long id;
+
+    @Column(name = "nombre", length = 50)
+    String nombre;
+    @Column(name = "stock", length = 50)
     int stock;
+
+    @Column(name = "precio", length = 50)
     int precio;
+
+    @Column(name = "temporada", length = 50)
     String temporada;
 
-    public int getIdart() {
-        return idart;
+    @Column(name = "tipo", length = 50)
+    String tipo;
+
+   @ManyToMany(mappedBy = "articulos")
+    List <Compra> compras;
+
+    public void setComprasconesteart(List<Compra> comprasconesteart) {
+        this.compras = comprasconesteart;
     }
 
-    public void setIdart(int idart) {
-        this.idart = idart;
+    public List<Compra> getComprasconesteart() {
+        return compras;
+    }
+
+    public String getnombre() {
+        return nombre;
+    }
+
+    public void setnombre(String nombre) {
+        nombre = nombre;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long idart) {
+        this.id = idart;
+
     }
 
     public int getPrecio() {
@@ -56,13 +88,6 @@ public class Articulo
         this.stock = stock;
     }
 
-    public String getNombreusuario() {
-        return Nombreusuario;
-    }
-
-    public void setNombreusuario(String nombreusuario) {
-        Nombreusuario = nombreusuario;
-    }
 
     public String getTemporada() {
         return temporada;
@@ -72,10 +97,21 @@ public class Articulo
         this.temporada = temporada;
     }
 
+    public String getTipo () {
+        return this. tipo; }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+
+
     public static String retornarclase ()
         {
             return "Esta es la clase Articulo";
 
         }
+
+
 
 }
