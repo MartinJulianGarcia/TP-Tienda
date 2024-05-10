@@ -9,12 +9,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface Articulo_repositorio extends CrudRepository <Articulo, Long> {
+public interface
+Articulo_repositorio extends CrudRepository <Articulo, Long> {
 
     @Override
     Optional findById(Long id);
 
-    List<Articulo> findBynombre (String nombre);
+    Articulo findBynombre (String nombre);
 
     List<Articulo> findBytemporada (String temporada);
 

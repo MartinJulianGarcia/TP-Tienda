@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import jakarta.persistence.*;
 
 
+@Entity
 public class Admin extends Usuario
 {
     public Admin (Long id, String Nombreusuario, String contraseña, String mail)
@@ -13,8 +14,7 @@ public class Admin extends Usuario
         this.id=id;
     }
 
-    @Id
-    Long id;
+
 
     public Long Returncodigo()
     {
