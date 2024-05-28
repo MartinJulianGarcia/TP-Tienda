@@ -21,7 +21,7 @@ public abstract class Usuario
         public Usuario ()
         {
         }
-        @Id
+        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         Long id;
 
 

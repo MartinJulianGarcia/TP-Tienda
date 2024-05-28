@@ -1,7 +1,7 @@
 package com.TrabajoPractico.BackendtiendaMG.repositorio;
 
 
-import com.TrabajoPractico.BackendtiendaMG.model.Articulo;
+import com.TrabajoPractico.BackendtiendaMG.model.*;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,8 +12,8 @@ import java.util.Optional;
 public interface
 Articulo_repositorio extends CrudRepository <Articulo, Long> {
 
-    @Override
-    Optional findById(Long id);
+   // @Override
+    //Optional findById(Long id);
 
     Articulo findBynombre (String nombre);
 
