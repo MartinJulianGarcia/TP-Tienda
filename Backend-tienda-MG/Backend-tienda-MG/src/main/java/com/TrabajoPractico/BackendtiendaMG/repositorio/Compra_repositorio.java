@@ -1,7 +1,7 @@
 package com.TrabajoPractico.BackendtiendaMG.repositorio;
 
 
-import com.TrabajoPractico.BackendtiendaMG.model.Compra;
+import com.TrabajoPractico.BackendtiendaMG.model.*;
 import com.TrabajoPractico.BackendtiendaMG.model.Usuario;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

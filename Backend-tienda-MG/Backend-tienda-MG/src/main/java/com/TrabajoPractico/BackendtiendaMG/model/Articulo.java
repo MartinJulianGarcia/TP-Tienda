@@ -27,7 +27,7 @@ public class Articulo
     {
     }
 
-    @Id
+    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)// poner la  notacion para que sea automatico
     Long id;
 
     @Column(name = "nombre", length = 50)
@@ -55,12 +55,12 @@ public class Articulo
         return compras;
     }
 
-    public String getnombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setnombre(String nombre) {
-        nombre = nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Long getId() {

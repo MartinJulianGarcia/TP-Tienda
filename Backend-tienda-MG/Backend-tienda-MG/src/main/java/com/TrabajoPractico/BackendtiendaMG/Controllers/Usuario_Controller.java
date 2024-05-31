@@ -1,6 +1,6 @@
 package com.TrabajoPractico.BackendtiendaMG.Controllers;
 
-import com.TrabajoPractico.BackendtiendaMG.model.Articulo;
+import com.TrabajoPractico.BackendtiendaMG.model.Usuario;
 import com.TrabajoPractico.BackendtiendaMG.servicios.Articulo_metodos;
 import com.TrabajoPractico.BackendtiendaMG.servicios.Usuario_metodos;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +19,10 @@ public class Usuario_Controller {
 
     @Autowired
     private Usuario_metodos usuarioMetodos;
+
+    @PostMapping (value = "")
+    public Usuario CrearUsuario (@RequestBody Usuario u){ return usuarioMetodos.CrearUsuario(u);}
+
+
 
 }
